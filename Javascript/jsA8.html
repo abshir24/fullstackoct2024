@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <style>
+            div{
+                border:solid black 2px;
+                width:400px;
+                height:400px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <button id="change-color">Change Color</button>
+
+        <div id="box">
+            <h1>Change Me</h1>
+        </div>
+
+
+        <script>
+           let btn = document.getElementById("change-color")
+           let div = document.getElementById("box")
+            
+           
+           btn.addEventListener('click', function(){
+                let array = ["Green","Blue","Red","Yellow"]
+
+                let randomIndex = Math.floor(Math.random() * array.length)
+
+                div.style.backgroundColor = array[randomIndex]
+           })
+        </script>
+    </body>
+</html>
