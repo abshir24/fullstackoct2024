@@ -1,10 +1,11 @@
 class Car:
-    weight = 3000
-    make = "Toyota"
-    model = "Camry"
-    price = 28000
-    year = 2024
-
+    def __init__(self,make,model,weight,price,year):
+        self.make = make
+        self.model = model
+        self.weight = weight
+        self.price = price
+        self.year = year
+    
     def printCarInfo(self):
         print("Weight: ", self.weight)
         print("Make: ", self.make)
@@ -13,10 +14,8 @@ class Car:
         print("Year: ", self.year)
 
     
+car1 = Car("Toyota","Camry",3197,28000,2024)
+car2 = Car("Honda","Accord",3197,28000,2024)
 
-
-toyota1 = Car()
-
-toyota1.printCarInfo()
-
-
+car1.printCarInfo()
+car2.printCarInfo()
