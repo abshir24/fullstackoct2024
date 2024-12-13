@@ -1,21 +1,24 @@
-class Car:
-    def __init__(self,make,model,weight,price,year):
+class Vehicle: #This is the parent class
+    def __init__(self, weight, base_speed):
+        print("Parent Constructor")
+        self.weight = weight
+
+        self.base_speed =  base_speed
+
+    def printVehicleStats(self):
+        print("Weight: " , self.weight, "Base Speed: ", self. base_speed)
+
+ 
+class Car(Vehicle):
+    def __init__(self, weight, base_speed, make, model):
+        print("Child Constructor")
         self.make = make
         self.model = model
-        self.weight = weight
-        self.price = price
-        self.year = year
-    
-    def printCarInfo(self):
-        print("Weight: ", self.weight)
-        print("Make: ", self.make)
-        print("Model: ", self.model)
-        print("Price: ", self.price)
-        print("Year: ", self.year)
 
+        super().__init__(weight,base_speed)
     
-car1 = Car("Toyota","Camry",3197,28000,2024)
-car2 = Car("Honda","Accord",3197,28000,2024)
+    
 
-car1.printCarInfo()
-car2.printCarInfo()
+car1 = Car(2957,140,"Tesla","Model X")
+
+car1.printVehicleStats()
