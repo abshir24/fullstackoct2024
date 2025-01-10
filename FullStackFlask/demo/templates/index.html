@@ -6,3 +6,16 @@
     <input type="password" name="password" placeholder="Password"><br>
     <input type="submit" value="Add">
 </form>
+
+<h1>All users:</h1>
+
+<ul>
+    {% for user in all_users %}
+        <h1>--------------------------------------</h1>
+        <li>Email: {{ user.email }}</li>
+        <li>Password: {{ user.password }}</li>
+        <li> <a href="/update/{{user.id}}">Edit User </a></li>
+        <li> <a href="/delete/{{user.id}}"> Delete User </a></li>
+        <h1>--------------------------------------</h1>
+    {% endfor %}
+</ul>

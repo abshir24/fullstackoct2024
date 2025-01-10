@@ -17,7 +17,10 @@ class User(db.Model):
 @app.route('/')
 
 def index():
-    return render_template("index.html")
+    all_users = User.query.all() # Returns a list of all users in the database [User1, User2, User3, ...]
+    # first_user = User.query.first() # Returns the first user in the database
+    # user = User.query.get(1) # Returns the user with the id of 1
+    return render_template("index.html", all_users = all_users)
 
 @app.route('/adduser', methods=['POST', 'GET'])
 def adduser():
@@ -31,6 +34,27 @@ def adduser():
 
         db.session.commit()
         
+    return redirect('/')
+
+@app.route('/update/<user_id>')
+def update(user_id):
+    user = User.query.get(user_id)
+
+    user.email = "update@update.com"
+    user.password = "4321"
+
+    db.session.commit()
+
+    return redirect('/')
+
+@app.route('/delete/<user_id>')
+def delete(user_id):
+    user = User.query.get(user_id)
+
+    db.session.delete(user)
+
+    db.session.commit()
+
     return redirect('/')
 
 if __name__ == "__main__":
