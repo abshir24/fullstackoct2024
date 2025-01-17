@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>News Feed</title>
+        <style>
+            .post{
+                border: 1px solid black;
+                padding: 10px;
+                margin: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hello {{ session['username'] }}
+        </h1>
+        <h2>Create Post</h2>
+        <form action="/create_post" method="post">
+            <label for="title">Title</label><br>
+            <input type="text" id="title" name="title" placeholder="Title" required><br>
+            <label for="post">Post</label><br>
+            <textarea id="post" name="post" placeholder="Write your post here..." required></textarea><br>
+            <input type="submit" value="Create Post">
+        </form>
+
+        {% for post in posts %}
+            <div class="post">   
+                <h2>Title: {{ post['title'] }}</h2>
+                <p> Post: {{ post['post'] }}</p>
+                <p> Created by: {{ post['username'] }}</p>
+                <p> Created at: {{ post['date_added'] }}</p>
+            </div>
+        {% endfor %}
+
+        <a href="/logout">Logout</a>
+    </body>
+</html>
