@@ -1,10 +1,6 @@
-import './App.css';
 import React, { useState, useEffect } from 'react';
-import ComponentWithProps from './components/ComponentWithProps'
-import EventHandler from './components/EventListener';
-import ListRenderer from './components/ListRenderer';
 
-function App() {
+function Counter(){
   const [counter, setCounter] = useState(0)
 
   useEffect(()=>{
@@ -34,13 +30,4 @@ function App() {
   );
 }
 
-export default App;
-
-
-
-
-
-
-
-
-
+export default Counter
