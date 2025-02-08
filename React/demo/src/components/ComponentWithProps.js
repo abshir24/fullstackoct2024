@@ -1,6 +1,13 @@
+import { useNavigate } from 'react-router-dom';
+
 function ComponentWithProps(props){
-    console.log(props)
-    return <h1>This component has props</h1>
+    const navigate = useNavigate()
+
+    let redirect = ()=>{
+        navigate('/home')
+    }
+    
+    return <button onClick={redirect}>Redirect to Home</button>
 }
 
 export default ComponentWithProps
