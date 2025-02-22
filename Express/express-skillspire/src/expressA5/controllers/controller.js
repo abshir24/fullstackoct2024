@@ -1,46 +1,43 @@
-let todos = [
-    {
-        "id":1,
-        "todo":"Laundry",
-        "description":"Do laundry!"
-    },
-    {
-        "id":2,
-        "todo":"Clean Kitchen",
-        "description":"Clean Kitchen!"
-    }
-]
+const Todo = require('../models/Todo')
 
-const getAllTodos = (req,res) =>{
+const getAllTodos = async (req,res) =>{
+    let todos = await Todo.find()
+    
     res.json(todos)
 }
 
 const getTodoById = (req,res) =>{
-    let todo = todos.find(todo => todo.id == req.params.id)
-
-    res.json(todo)
+    Todo.findById(req.params.id)
+        .then((todo) => res.json(todo))
+        .catch((err) => res.send(err))
 }
 
 const addTodo = (req,res) =>{
-    todos.push(req.body)
+    const { todo, description } = req.body
 
-    res.json(todos)
+    const newTodo = new Todo({
+        todo:todo,
+        description: description
+    })
+
+    newTodo.save()
+        .then((todo) =>{
+            console.log("Successfully saved record")
+            res.json(todo)
+        })
+        .catch((err) => console.log("Error:", err))
 }
 
 const updateTodo = (req,res) =>{
-    let todoIndex = todos.findIndex(todo => todo.id == req.params.id)
-
-    todos[todoIndex] = req.body
-
-    res.json(todos)
+    Todo.findByIdAndUpdate(req.params.id, req.body, { new:true })
+        .then((todo) => res.json(todo))
+        .catch((err) => res.send(err))
 }
 
 const deleteTodo = (req,res) =>{
-    let todoIndex = todos.findIndex(todo => todo.id == req.params.id)
-
-    todos.splice(todoIndex,1)
-
-    res.json(todos)
+   Todo.findByIdAndDelete(req.params.id)
+        .then((todo) => res.json(todo))
+        .catch((err) => res.send(err)) 
 }
 
 module.exports = {
