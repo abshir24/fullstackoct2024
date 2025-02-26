@@ -1,8 +1,56 @@
+// let athletes = [
+//   'Usain Bolt',
+//   'Andre De Grasse ',
+//   'Christophe Lemaitre ',
+//   'Adam Gemili',
+//   'Churandy Martina',
+//   'LaShawn Merritt',
+//   'Alonso Edward',
+//   'Ramil Guliyev',
+// ];
 
-function sumAll(number1, number2, number3) {
-    return number1 + number2 + number3
+// let gold = athletes[0];
+// let silver = athletes[1];
+// let bronze = athletes[2];
+
+
+let athletes = [
+
+  'Usain Bolt',
+
+  'Andre De Grasse ',
+
+  'Christophe Lemaitre ',
+
+  'Adam Gemili',
+
+  'Churandy Martina',
+
+  'LaShawn Merritt',
+
+  'Alonso Edward',
+
+  'Ramil Guliyev',
+
+];
+
+let [gold, silver, bronze] = athletes;
+
+// console.log(gold, silver, bronze);
+
+
+const user = {
+  "username": "Sam",
+  "email": "sam@sam.com",
+  "password": "password123",
 }
 
-var array = [1,2,3]
+// let username = user['username']
+// let email = user['email']
+// let password = user['password']
 
-console.log(sumAll(...array))
+let { password, username } = user
+
+console.log( username,password )
+
+

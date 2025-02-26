@@ -9,7 +9,7 @@ app.use(bodyParser.json())
 app.use("/", router)
 
 const port = 8000
-let connection_string = "mongodb+srv://abshir24:NUSv1sOaW66hkiAT@cluster0.vl2zp.mongodb.net/?"
+let connection_string = ""
 
 mongoose.connect(connection_string)
 .then(()=>{

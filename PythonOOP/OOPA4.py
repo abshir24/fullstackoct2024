@@ -66,3 +66,4 @@ class Cheetah(BigCat):
         if( isinstance(bigcat, Leopard) ):
             bigcat.attack( self )
             return 
+        
