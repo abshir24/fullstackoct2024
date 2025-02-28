@@ -13,6 +13,8 @@ const getTodoById = (req,res) =>{
 }
 
 const addTodo = (req,res) =>{
+    console.log(req.body)
+
     const { todo, description } = req.body
 
     const newTodo = new Todo({
@@ -21,9 +23,11 @@ const addTodo = (req,res) =>{
     })
 
     newTodo.save()
-        .then((todo) =>{
-            console.log("Successfully saved record")
-            res.json(todo)
+        .then(async (todo) =>{
+            
+            let allTodos = await Todo.find()
+
+            res.json(allTodos)
         })
         .catch((err) => console.log("Error:", err))
 }

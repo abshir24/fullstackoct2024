@@ -13,7 +13,7 @@ app.use(cors())
 app.use("/", router)
 
 const port = 8000
-let connection_string = ""
+let connection_string = "mongodb+srv://abshir24:NUSv1sOaW66hkiAT@cluster0.vl2zp.mongodb.net/?"
 
 mongoose.connect(connection_string)
 .then(()=>{

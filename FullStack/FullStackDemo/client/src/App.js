@@ -1,37 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useEffect } from 'react'
-import { getTodos } from './api/api'
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AddTodoForm from './components/AddTodoForm';
 
 function App() {
-
-  useEffect(()=>{
-    const fetchTodos = async () =>{
-      const response = await getTodos()
-
-      console.log(response.data)
-    }
-
-    fetchTodos()
-  })
   
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element = {<AddTodoForm />} exact />
+  
+      </Routes>
+    </Router>
   );
 }
 
