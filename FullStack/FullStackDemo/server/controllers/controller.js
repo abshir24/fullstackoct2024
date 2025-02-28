@@ -33,6 +33,7 @@ const addTodo = (req,res) =>{
 }
 
 const updateTodo = (req,res) =>{
+    console.log(req.body)
     Todo.findByIdAndUpdate(req.params.id, req.body, { new:true })
         .then((todo) => res.json(todo))
         .catch((err) => res.send(err))
@@ -40,7 +41,11 @@ const updateTodo = (req,res) =>{
 
 const deleteTodo = (req,res) =>{
    Todo.findByIdAndDelete(req.params.id)
-        .then((todo) => res.json(todo))
+        .then(async (todo) =>{
+            let allTodos = await Todo.find()
+
+            res.json(allTodos)
+        })
         .catch((err) => res.send(err)) 
 }
 

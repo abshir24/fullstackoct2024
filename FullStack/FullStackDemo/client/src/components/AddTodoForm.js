@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { addTodo, getTodos } from '../api/api'
+import { addTodo, getTodos,deleteTodo } from '../api/api'
 import { Link } from 'react-router-dom';
 
 
@@ -18,9 +18,7 @@ function AddTodoForm(){
 
         fetchTodo()
     })
-
-
-
+    
     const handleSubmit = async (e) =>{
         e.preventDefault()
 
@@ -31,6 +29,15 @@ function AddTodoForm(){
 
         setTodos(response.data)
     }
+
+    const deleteSelectedTodo = async (id) =>{
+        
+        const response = await deleteTodo(id)
+
+        setTodos(response.data)
+    }
+
+    if(todos == null ) return "No Todos"
 
     return (
         <div>
@@ -58,7 +65,7 @@ function AddTodoForm(){
                             <td>{todo.todo}</td>
                             <td>{todo.description}</td>
                             <td><Link to={`/edit/${todo._id}`}>Edit</Link></td>
-                            <td><Link to={`/delete/${todo._id}`}>Delete</Link></td>
+                            <td><button onClick={ () => { deleteSelectedTodo(todo._id) }} >Delete</button></td>
                         </tr>
                     ))
                 }
