@@ -1,0 +1,16 @@
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <h1>Numbers</h1>
+        {% for number in numbers %}
+            {% if number|divisibleby:2 %}
+                <p>The number {{ number }} is even</p>
+            {% else %}
+                <p>The number {{ number }} is odd</p>
+            {% endif %}
+        {% endfor %}
+    </body>
+</html>

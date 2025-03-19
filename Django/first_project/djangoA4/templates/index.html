@@ -1,0 +1,22 @@
+<html>
+    <head>
+
+    </head>
+
+    <body>
+        <form action="printdata/" method="post">
+            {% csrf_token %} 
+            <label for="name">Name:</label><br>
+            <input type="text" name="name"><br>
+
+            <label for="name">Email:</label><br>
+            <input type="text" name="email"><br>
+
+
+            <label for="name">Favorite Food:</label><br>
+            <input type="text" name="food"><br>
+
+            <input type="submit" value="Submit"><br>
+        </form>
+    </body>
+</html>
