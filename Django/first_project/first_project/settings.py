@@ -31,10 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'demoapp',
     'djangoA5',
     'djangoA4',
     'djangoA3',
-    'demoapp',
     'djangoA2',
     'djangoA1',
     'first_app',

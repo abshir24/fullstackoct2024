@@ -1,17 +1,58 @@
 <html>
     <head>
-
+        <title>Create Post</title>
+        <style>
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+            th{
+                background-color: #f2f2f2;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+        </style>
     </head>
-
     <body>
-        <h1> Hello, World Djano! (Demo app) </h1>
+        <h1>Create a new Post</h1>
+        <form action="addpost/" method="post">
+            {% csrf_token %}
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" maxlength="200" required><br><br>
+            
+            <label for="post">Post:</label>
+            <textarea id="post" name="post" required></textarea><br><br>
+            
+            <input type="submit" value="Submit">
+        </form>
 
-        <h2>Name: {{ name }} </h2>
 
-        <h1>Numbers: </h1>
+        <h1>All Posts:</h1>
 
-        {% for number in numbers %}
-            <h3>{{ number }}</h3>
-        {% endfor %}
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Post</th>
+                <th>Time Stamp</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for post in all_posts %}
+                <tr>
+                    <td>{{post.title}}</td>
+                    <td>{{post.post}}</td>
+                    <td>{{post.created_date}}</td>
+                    <td>
+                        <a href="update/{{post.id}}">Edit</a>
+                        <a href="delete/{{post.id}}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
     </body>
 </html>
